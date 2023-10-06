@@ -21,14 +21,9 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
-            - run:
-                  git config --global url."https://${{ secrets.AUTOMATION_ACCESS_TOKEN }}@github.com/".insteadOf ssh://git@github.com/
             - run: yarn install
             - run: yarn run build
-            - name: Deploy
-              uses: s0/git-publish-subdir-action@master
-              env:
-                  REPO: self
-                  BRANCH: master-dist
-                  FOLDER: dist
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - uses: actions/upload-artifact@v3
+            with:
+            name: my-artifact
+            path: build
