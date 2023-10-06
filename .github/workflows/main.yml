@@ -23,7 +23,3 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - run: yarn install
             - run: yarn run build
-            - uses: actions/upload-artifact@v3
-            with:
-            name: my-artifact
-            path: build
