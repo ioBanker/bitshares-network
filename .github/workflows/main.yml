@@ -30,9 +30,6 @@ jobs:
     deployment:
         needs: build
         runs-on: ubuntu-latest
-        environment:
-            name: ${{ github.ref_name }}
-
         steps:
             - uses: actions/download-artifact@v3
               with:
